@@ -17,7 +17,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Emma's Unlimited Fortune",
+    default: "Happy Birthday to Ng Thanh Ngân - my only love",
     template: "%s · Emma's Unlimited Fortune",
   },
   description: "A little luxury today. A future we build together.",
