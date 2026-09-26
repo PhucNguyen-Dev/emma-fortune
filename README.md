@@ -145,15 +145,30 @@ friend shares from their own library).
   with activity record, contribution flow, wishlist flow, letter, reload persistence, and a
   no-horizontal-overflow check at 320px on every route.
 
-## Deployment (optional)
+## Deployment — it's live
 
-The app is a fully static export at heart — the build prerenders every route. To share it
-as a link you can deploy the production build to any free static-friendly host (Vercel,
-Netlify, Cloudflare Pages, GitHub Pages via an adapter):
+The app is published at:
+
+**https://phucnguyen-dev.github.io/emma-fortune/**
+
+It's a fully static build on GitHub Pages (free). To publish an update:
 
 ```bash
-pnpm build && pnpm start   # or connect the repo to your host of choice
+pnpm run build:pages      # builds the static export into out/ under /emma-fortune/
 ```
+
+then commit and force-push the `out/` folder to the `gh-pages` branch. The repo source
+lives on `main` (public repo — nothing personal is in the source; her content lives in
+her browser, not in the code).
+
+Deployment notes:
+- The export builds with `basePath: /emma-fortune` (via `scripts/build-pages.mjs`), so
+  all assets and the music files resolve correctly under the sub-path.
+- Local development is unchanged: `pnpm dev`, and `pnpm build && pnpm start` still run
+  a normal server at the root path.
+- Remember: a public link can be opened by anyone who has it. The song recording and the
+  static pages are downloadable by anyone with the URL; her personal data (letters she
+  writes, fund contributions, etc.) never leaves her browser.
 
 **Privacy note for a deployed link:** a public URL can be opened by anyone who has it.
 That's fine for a playful gift, but do not describe it as private or password-protected —
