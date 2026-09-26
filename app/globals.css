@@ -1,26 +1,131 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-ivory: #fff9f3;
+  --color-ivory-deep: #fbf1e7;
+  --color-plum: #54243f;
+  --color-plum-deep: #3a172d;
+  --color-rose: #d98ca3;
+  --color-rose-deep: #a8546e;
+  --color-blush: #f7e4e8;
+  --color-champagne: #d6b779;
+  --color-champagne-deep: #a98743;
+  --color-ink: #28212a;
+  --color-muted: #786c75;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --shadow-luxe: 0 18px 40px -18px rgb(84 36 63 / 0.28);
+  --shadow-card: 0 2px 10px -4px rgb(84 36 63 / 0.12);
+
+  --animate-fade-up: fade-up 0.5s ease-out both;
+  --animate-fade-in: fade-in 0.4s ease-out both;
+  --animate-pop-in: pop-in 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.4) both;
+  --animate-confetti-fall: confetti-fall 2.4s ease-in forwards;
+  --animate-sparkle: sparkle 1.8s ease-in-out infinite;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes confetti-fall {
+    0% {
+      opacity: 1;
+      transform: translate3d(0, -10vh, 0) rotate(0deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translate3d(var(--confetti-drift, 0px), 105vh, 0) rotate(var(--confetti-spin, 540deg));
+    }
+  }
+  @keyframes sparkle {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scale(0.9);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-blush);
+  color: var(--color-plum);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-champagne-deep);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Decorative hairline used under section headings */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-champagne), transparent);
+}
+
+/* Bank card sheen */
+.card-sheen {
+  background-image:
+    radial-gradient(120% 140% at 85% 0%, rgb(214 183 121 / 0.35), transparent 55%),
+    linear-gradient(135deg, var(--color-plum) 0%, var(--color-plum-deep) 100%);
+}
+
+.paper-texture {
+  background-image: linear-gradient(rgb(214 183 121 / 0.12) 1px, transparent 1px);
+  background-size: 100% 28px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

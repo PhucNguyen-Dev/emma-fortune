@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Playwright artifacts and local screenshots
+test-results/
+playwright-report/
+shots/
+
+# static export output for GitHub Pages
+out/

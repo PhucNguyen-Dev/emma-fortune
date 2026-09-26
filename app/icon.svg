@@ -1,0 +1,17 @@
+import type { SVGProps } from "react";
+
+/** App monogram: a heart set in a plum medallion, used as favicon and mark. */
+export default function Icon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" {...props}>
+      <circle cx="32" cy="32" r="30" fill="#54243F" />
+      <circle cx="32" cy="32" r="26" fill="none" stroke="#D6B779" strokeWidth="1.5" />
+      <path
+        d="M32 44s-12-7.35-12-15.5C20 23.5 23.5 20 27.5 20c2.5 0 4.5 1.5 4.5 1.5S34 20 36.5 20C40.5 20 44 23.5 44 28.5 44 36.65 32 44 32 44z"
+        fill="#D98CA3"
+        stroke="#D6B779"
+        strokeWidth="1"
+      />
+    </svg>
+  );
+}
