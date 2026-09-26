@@ -32,7 +32,7 @@ describe("loadAppState", () => {
   it("returns defaults when nothing is stored", () => {
     const result = loadAppState(memoryStorage());
     expect(result.recovered).toBe(false);
-    expect(result.state.config.recipientName).toBe("Emma");
+    expect(result.state.config.recipientName).toBe("Ng Thanh Ngân");
   });
 
   it("round-trips through save without recovery", () => {
@@ -50,7 +50,7 @@ describe("loadAppState", () => {
     const result = loadAppState(storage);
     expect(result.recovered).toBe(true);
     expect(result.error).toBe("corrupt");
-    expect(result.state.config.recipientName).toBe("Emma");
+    expect(result.state.config.recipientName).toBe("Ng Thanh Ngân");
     expect(storage.getItem(`${STORAGE_KEY}:corrupt-backup`)).toBe("{not json");
   });
 
@@ -82,7 +82,7 @@ describe("loadAppState", () => {
     expect(result.recovered).toBe(true);
     expect(result.state.transactions).toHaveLength(1);
     expect(result.state.contributions).toHaveLength(0);
-    expect(result.state.config.recipientName).toBe("Emma");
+    expect(result.state.config.recipientName).toBe("Ng Thanh Ngân");
   });
 });
 

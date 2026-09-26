@@ -1,6 +1,6 @@
 import type { AppState, AppConfig, Coupon, WishlistItem } from "@/types";
 
-export const DEFAULT_RECIPIENT_NAME = "Emma";
+export const DEFAULT_RECIPIENT_NAME = "Ng Thanh Ngân";
 export const DEFAULT_SENDER_NAME = "Your Love";
 export const DEFAULT_CURRENCY = "VND";
 export const DEFAULT_LOCALE = "vi-VN";
@@ -17,12 +17,12 @@ export const defaultConfig: AppConfig = {
   appTitle: "Emma's Unlimited Fortune",
   tagline: "A little luxury today. A future we build together.",
   letter: {
-    salutation: "My dearest Emma,",
+    salutation: "My dearest Ngân,",
     body: [
       "Happy birthday, my love.",
       "I know you love money and beautiful things, and I wish I could give you everything you've been dreaming about today. I can't do that right now, so I made you this little world instead: a playful fortune, a place for your wishes, and a fund I hope to build honestly over time.",
       "I don't want to pretend that points are money or that a dream is already paid for. I just want you to know that I listen to what you love, I care about your happiness, and I want to keep building a life with more possibilities.",
-      "Today is yours. Happy birthday, Emma. I love you.",
+      "Today is yours. Happy birthday, Ngân. I love you.",
     ].join("\n\n"),
     signOff: "Forever yours,",
     personalReasons: [],

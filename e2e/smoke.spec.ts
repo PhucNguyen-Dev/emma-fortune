@@ -17,7 +17,7 @@ async function dismissIntro(page: Page) {
 
 test("overview greets Emma and navigates into all modules", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: /Happy Birthday, Emma\./i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Happy Birthday, Ng Thanh Ngân./i })).toBeVisible();
   await dismissIntro(page);
 
   for (const label of ["Birthday Bank", "Future Fund", "Wish List", "My Letter"]) {
