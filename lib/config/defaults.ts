@@ -9,6 +9,45 @@ export const DEFAULT_LOCALE = "vi-VN";
 export const DEMO_FUND_TARGET = 5_000_000;
 export const STARTING_LOVE_BALANCE = 1_000_000;
 
+/**
+ * The five voices of the birthday greeting — one per world she belongs to.
+ * The hero picks one at random each visit (client-side, after hydration).
+ * The first entry is also what renders on the server, so there is no mismatch.
+ */
+export type BirthdayGreeting = {
+  lang: string;
+  text: string;
+  dir: "ltr" | "rtl";
+};
+
+export const BIRTHDAY_GREETINGS: BirthdayGreeting[] = [
+  {
+    lang: "English",
+    text: "Happy Birthday to my Angel — Emma, I give my all to you!",
+    dir: "ltr",
+  },
+  {
+    lang: "Tiếng Việt",
+    text: "Chúc mừng sanh nhựt bé iu của anh, Thanh Ngân!",
+    dir: "ltr",
+  },
+  {
+    lang: "العربية",
+    text: "كل عام وأنتي بخير يا عشقي الأبدي — Aaliyah al Faruqi",
+    dir: "rtl",
+  },
+  {
+    lang: "Osmanlıca",
+    text: "Muhteşem müstakbel zevcem Naila, mîlâd günün mübârek olsun!",
+    dir: "ltr",
+  },
+  {
+    lang: "Ἑλληνική",
+    text: "Εἰ γὰρ μακάριον γενέθλιον ἦμαρ εἴη σοι, ὦ ἐμὴ θαυμαστὴ Happy Goddess τῆς Γαίας",
+    dir: "ltr",
+  },
+];
+
 export const defaultConfig: AppConfig = {
   recipientName: DEFAULT_RECIPIENT_NAME,
   senderName: DEFAULT_SENDER_NAME,

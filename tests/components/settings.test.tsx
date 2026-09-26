@@ -121,7 +121,7 @@ describe("Overview intro", () => {
     renderWithProviders(<OverviewView />);
     expect(screen.queryByRole("dialog", { name: "Birthday greeting" })).not.toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /Happy Birthday, Ng Thanh Ngân./i }),
+      screen.getByRole("heading", { name: /Happy Birthday to my Angel|Chúc mừng sanh nhựt|عشقي الأبدي|Muhteşem müstakbel|μακάριον γενέθλιον/i }),
     ).toBeInTheDocument();
   });
 });

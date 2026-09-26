@@ -16,6 +16,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Confetti } from "@/components/ui/confetti";
+import { BIRTHDAY_GREETINGS } from "@/lib/config/defaults";
 import { useAppState } from "@/lib/state/AppStateContext";
 import { currentLoveBalance } from "@/lib/utils/bank";
 import { computeFundSummary } from "@/lib/utils/fund";
@@ -108,6 +109,14 @@ export function OverviewView() {
   const fund = computeFundSummary(state.contributions, config.fund.targetAmount);
   const letterPreview = config.letter.body.replace(/\s+/g, " ").slice(0, 150);
 
+  // The greeting renders deterministically on the server, then one of the five
+  // voices is chosen after mount — random per visit, never a hydration error.
+  const [greeting, setGreeting] = useState(BIRTHDAY_GREETINGS[0]);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- the random voice can only be drawn on the client, after hydration, without breaking SSR
+    setGreeting(BIRTHDAY_GREETINGS[Math.floor(Math.random() * BIRTHDAY_GREETINGS.length)]);
+  }, []);
+
   return (
     <div className="flex flex-col gap-8">
       <IntroCelebration />
@@ -124,9 +133,15 @@ export function OverviewView() {
         <p className="text-xs font-semibold tracking-[0.22em] text-champagne-deep uppercase">
           A private little fortune
         </p>
-        <h1 className="mx-auto mt-3 max-w-2xl font-display text-4xl font-semibold text-plum sm:text-5xl">
-          Happy Birthday, {config.recipientName}.
+        <h1
+          dir={greeting.dir}
+          className="mx-auto mt-3 max-w-2xl font-display text-3xl font-semibold leading-snug text-plum break-words [text-wrap:balance] sm:text-4xl"
+        >
+          {greeting.text}
         </h1>
+        <p className="mt-3 text-xs font-medium tracking-wide text-muted">
+          with love, in {greeting.lang}
+        </p>
         <p className="mx-auto mt-4 max-w-xl text-base text-muted sm:text-lg">
           Your taste is expensive. My love is unlimited. Let&apos;s see what&apos;s in your
           portfolio.
